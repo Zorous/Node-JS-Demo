@@ -5,7 +5,7 @@ const Callback = function (message){
     }
 
 const test = function(){
-    console.log("bye bye")
+    console.log("Hellooo!")
 }
 
 // we assign a function as a parameter
