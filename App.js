@@ -9,12 +9,3 @@ console.log(things.justaVar)
 
 
 
-
-//Same Process
-// const Callback = function (m){
-//     m();
-//     }
-//     const test = function(){
-//     console.log("bye bye")
-//     }
-//     Callback(test);

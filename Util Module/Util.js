@@ -22,6 +22,7 @@ console.log(person.name + ' said : '+talk)
 })
 }
 );
+
 //without inheriting the event module from events using util, we wasn't would be able to trigger an event that way
 Emi.emit('speak','Heyooooo!!')
 Ryu.emit('speak','Yelloo!')
