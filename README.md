@@ -215,4 +215,27 @@ _______________CREATE DIRECTORY______________
 to do it without blocking the flow of our code we need to just split the Sync word and fire a function to handle it
 
 
+---------------------------------------------------------------Clients & Servers(Reminder)---------------------------------------------------------------
+When the users are normally scrolling on web on a specific browser they send requests to the server, then the server handle that request and send the response to the user.
+But how does the user and the server actually communicates with each other.
+here when the PROTOCOLS role comes
+
+What's a PROTOCOLE : 
+a protocole is basically a set od communiaction rules, that 2 sides agree to use when communicating, there's so much famous protocoles like : 
+FTP (File Transfer Protocol)
+TCP
+HTTP
+
+The informations are send down the socket between the 2 computers (server and user's computer) via a protocol called TCP.
+so while the data is Structured on a particular way, the way it got sent from the server to the client is via that TCP.
+TCP essentailly does split the coming data into smaller little sections and transfer them along the socket.
+the splitted small lil sections called SOCKETS.
+So this functionality is built in our computers and Node JS gives us the ability to access to this functionality .
+so if we run Node JS on the server side we could tell them what informations we wanna send out to client when they make a particular action.
+
+
+
+
+
+
 
