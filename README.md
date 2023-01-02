@@ -1,5 +1,3 @@
-# Node-JS-Demo (summarize)
-
 -----------------------------------------------------------------------------NodeJS---------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -21,18 +19,18 @@ so we no longer need to use PHP or Ruby on the server side to interact with our 
 - Great for real-time services like chatrooms etc..
 
 **********************Learning Roadmap********************
-*	- The inner workings of Node.js	   	*
-*		- V8 engine		   	*
-*		- Modules				*
-*		- Event emitter			*
-*		- The file system
-*						*
-*	- Creating a web server			*
-*		- Routing
-*		- Express				*
-*		- Templating			*
-						*
-*	- Make a Node JS app			*
+	- The inner workings of Node.js	   	
+		- V8 engine		   	
+		- Modules				
+		- Event emitter			
+		- The file system
+						
+	- Creating a web server			
+		- Routing
+		- Express				
+		- Templating			
+						
+	- Make a Node JS app			
 **********************************************************
 _______________________________________________________________________________________________
 
@@ -175,7 +173,7 @@ Emi.emit('speak','Heyooooo!!')
 
 
 -------------------------------------------------------------Reading & Writing Files ---------------------------------------------------------------
-to read and write files on our computer we will need to use the help of one of Node Js's  core module and it's called "fs"
+to read and write and interact with files on our computer we will need the help of one of the core Node Js modules and it's called "fs"
 we import it simply that way ; 
 var fs = require('fs');
 _______________READING______________
@@ -188,3 +186,33 @@ var fs = require('fs');
 var Doc = fs.readFileSync('Document.txt', 'utf8')
 console.log(Doc)
 //it's as simple as that to read a file
+
+_______________WRITING______________
+var fs = require('fs');
+
+
+//using the writeFileSync method we could make changes in files
+//it accepts 2 parameters the 1st one is the file's path and the 2nd one is the changes u want to make.
+//if the file does exist it will make changes on it, if it doesn't it will create one with that name and write what u have assigned to it
+fs.writeFileSync('Doc.txt',"i got changed")
+
+_______________DELETING FILE______________
+//we could do that easily using the unlink method
+//exe : 
+fs.unlink('filePath.extension')
+
+_______________CREATE DIRECTORY Synchronously______________
+/* always using the fs module, and just as how we make a directory on DOS cmds
+we could do it easily on Node js too, using the mkdirSync() methode 
+exe : */
+fs.mkdirSync('directorysName')
+
+_______________DELETING DIRECTORY Synchronously______________
+//we just replace mkdirSync with emdirSync
+fs.rmdirSync('directorysName')
+
+_______________CREATE DIRECTORY______________
+to do it without blocking the flow of our code we need to just split the Sync word and fire a function to handle it
+
+
+
