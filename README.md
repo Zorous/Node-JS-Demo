@@ -5,7 +5,7 @@
 JavaScript is written to run on browsers and it doesn't to meant to deal with lower level operations.
 - A Plateform which allows us to run JavaScript Code on Computer/Server;
 so we no longer need to use PHP or Ruby on the server side to interact with our database,
- and no longer need to learn any other intermediate programming language than just JavaScript.
+ and no longer need to learn any other intermediate programming languages than just JavaScript.
 
 - It's also allows us to Read, Delete and Update files
 - Easily communicate with database
@@ -19,18 +19,18 @@ so we no longer need to use PHP or Ruby on the server side to interact with our 
 - Great for real-time services like chatrooms etc..
 
 **********************Learning Roadmap********************
-	- The inner workings of Node.js	   	
-		- V8 engine		   	
-		- Modules				
-		- Event emitter			
-		- The file system
-						
-	- Creating a web server			
-		- Routing
-		- Express				
-		- Templating			
-						
-	- Make a Node JS app			
+*	- The inner workings of Node.js	   		*
+*		- V8 engine		   	*
+*		- Modules				*
+*		- Event emitter			*
+*		- The file system
+*						*
+*	- Creating a web server			*
+*		- Routing
+*		- Express				*
+*		- Templating			*
+						*
+*	- Make a Node JS app			*
 **********************************************************
 _______________________________________________________________________________________________
 
@@ -63,12 +63,16 @@ Node JS also can tell us which directory or file name we are in using those :  "
 
 
 ---------------------------------------------------------------Function Expressions ( ! )---------------------------------------------------------------
+
+//2
 const Callback = function (m){
 m();
 }
+//1
 const test = function(){
 console.log("bye bye")
 }
+//3
 Callback(test);
 
 >>bye bye
@@ -130,7 +134,7 @@ what we was doing so far is creating our costume Modules, and the Node JS has an
 exe 1:  the event module
 var events = require('events')
 
-var myEmitter = new events.events.EventEmitter();
+var myEmitter = new events.EventEmitter();
 
 //it's so much like make a JQuery event listener.
 //So what we do here is when a specific event is trigered we launch a function
@@ -141,7 +145,7 @@ console.log(message)
 //here we trigered the event manually
 myEmitter.emit('someEvent', 'the event was emitted')
 
-
+__________________util___________
 exe 2 : the util module
 var events = require('events')
 var util = require('util')
@@ -172,7 +176,7 @@ console.log(person.name + ' said : '+talk)
 Emi.emit('speak','Heyooooo!!')
 
 
--------------------------------------------------------------Reading & Writing Files ---------------------------------------------------------------
+-------------------------------------------------------------Interacting with the system files------------------------------------------------------------
 to read and write and interact with files on our computer we will need the help of one of the core Node Js modules and it's called "fs"
 we import it simply that way ; 
 var fs = require('fs');
@@ -235,7 +239,135 @@ so if we run Node JS on the server side we could tell them what informations we 
 
 
 
+--------------------------------------------------------------------Creating a Server---------------------------------------------------------------
+To create a server, we need the help of an HTTP module, this module has a methode called "createServer()" that could help us to create a server,
+it accepts a function as a parametre that's has 2 parametres (requestObject,ResponseObject) to deal with the server requests.
+the RequestObject comes loaded with the details about the request that has been made.
+the responseObject is something we use to send response to the client.
+____________Response Headers_____________
+/* A Response Headers is where we specify the Response's type, each response type can be treated differently (JSON,HTML,XML...)
+it has also the Response Status (200(OK),404(NOT FOUND)) */
+
+var http = require('http');
+
+var server = http.createServer(function(req , res){
+res.writeHead(200,{'Content-Type' : 'text/plain'});
+res.end('Awwwwwesome')
+});
+
+//it still wouldn't work bcs we didn't specify a PORT number which it should listen to, so we need to set  it to listen to a particular PORT on Requests
+
+server.listen(3000, '127.0.0.1')
+
+
+__________________________Streams and Buffers______________________
+
+Buffers :
+- are a Temporary storage spot for chunk of data that is being transferred from one place to another
+- Transfer samll chunks of data at a time
+- the buffer is filled with data, then passed along
+
+Streams : it's simply a stream of data that flows overtime from one place to another
+the data fllows down the stream into the buffer which collects a small chunk of data together into a buffer, 
+ after the buffer is filled it passed that chunk of data down the stream to be processed to the client
+
+so there uses is we can start consuming data even before it's fully arrived
+it's increases the performance of our application so much
+
+There's 3 types of streams:
+-writable streams - allow node js to write data to a stream
+- readable streams - allows js t read data from our stream
+- Duplex - can read and write to a stream
+
+
+
+__________________READABLE   STREAM____________________
+We can make our own custom stream in Node JS,
+first of all we need to use the fs module, so we can read documents throught the streams
+createReadStream() : => takes a parametre that has the directory name u are in concatenated with the file name, it also had a custom 3rd parametre and it's the type of the return ('utf-8',...)
+also there's an event called DATA in the readStream, which allows us to listen to any kind of chunk of data from the stream
+
+
+var http = require('http');
+var fs = require('fs');
+
+
+//it will read it a lil bit per time, and split the data before pass it in chunks to the variable
+var myReadStream = fs.createReadStream(__dirname +'/fileName');
+
+//we use a data event to listen to the variable when each chunk of the data arrives
+//it takes 2 parametres. p1; the event. p2; a fired function on that event that has chunk as a parametre
+
+myReadStream.on('data', function(chunk){
+console.log('new chunk received');
+console.log(chunk);
+});
+
+
+//The benifit of this is every time we get a chunk of data we send it to the user using a writable stream so the app will be tooooo fast
+
+
+__________________WRITABLE   STREAM____________________
+
+var fs = require('fs');
+
+var http = require('http');
+
+/* 
+We can make our own custom stream in Node JS,
+first of all we need to use the fs module, so we can read documents through the streams
+createReadStream() : => takes a parameter that has the directory name u are in concatenated with the file name, it also had a custom 3rd parametre and it's the type of the return ('utf-8',...)
+also there's an event called DATA in the readStream, which allows us to listen to any kind of chunk of data from the stream */
+
+//it will read it a lil bit per time, and split the data before pass it in chunks to the variable
+var myReadStream = fs.ReadStream(__dirname+"/ReadMe.txt",'utf-8')
+
+//using this variable we will write every received chunk in a WriteMe.txt file, its will write on it if its already exists or create it if it doesn't
+var myWriteStream = fs.WriteStream(__dirname+"/WriteMe.txt")
+
+
+//we use a data event to listen to the variable when each chunk of the data arrives
+//it takes 2 parameters. p1; the event. p2; a fired function on that event that has chunk as a parameter
+
+myReadStream.on('data',function(chunk){
+    console.log('A new chunk has arrived')
+    // console.log(chunk);
+
+    //it has pre-defined method called write(), we use it to write on files
+    myWriteStream.write(chunk)
+})
 
 
 
 
+
+----------------------------------------------------PIPES---------------------------------------------------
+
+/* This process of reading data from a Read Stream and tranfering data via the WriteStream is quire commune in Node JS
+
+that's why there's pipes
+
+a pipe can help us do exactly the same thing, on the commune way after we read Data we transfer it manually using the writeStream
+BUT using a pipe we can do the writing process automatically (pipping it)
+
+From Readable to Writable Stream ( ✅)
+From a Writable to a Readable Stream (❎)
+
+ */
+
+
+
+var fs = require('fs');
+
+var http = require('http');
+
+
+var myReadStream = fs.ReadStream(__dirname+"/ReadMe.txt",'utf-8')
+
+var myWriteStream = fs.WriteStream(__dirname+"/WriteMe.txt")
+
+//using the pipe method simply we can it
+myReadStream.pipe(myWriteStream);
+
+
+-------------------------------------------------------------------------------------------------------
