@@ -1,9 +1,9 @@
------------------------------------------------------------------------------NodeJS---------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------NodeJS-------------------------------------------------------------------------------------------------------------------
+
 
 * Node JS Actually is :
 JavaScript is written to run on browsers and it doesn't to meant to deal with lower level operations.
-- A Plateform which allows us to run JavaScript Code on Computer/Server;
+- A Platform which allows us to run JavaScript Code on Computer/Server;
 so we no longer need to use PHP or Ruby on the server side to interact with our database,
  and no longer need to learn any other intermediate programming languages than just JavaScript.
 
@@ -19,12 +19,12 @@ so we no longer need to use PHP or Ruby on the server side to interact with our 
 - Great for real-time services like chatrooms etc..
 
 **********************Learning Roadmap********************
-*	- The inner workings of Node.js	   		*
-*		- V8 engine		   	*
-*		- Modules				*
-*		- Event emitter			*
+*	- The inner workings of Node.js	   	               	*
+*		- V8 engine		                	               *
+*		- Modules			            	*
+*		- Event emitter		            	*
 *		- The file system
-*						*
+*						                    *
 *	- Creating a web server			*
 *		- Routing
 *		- Express				*
@@ -341,7 +341,7 @@ myReadStream.on('data',function(chunk){
 
 
 
-----------------------------------------------------PIPES---------------------------------------------------
+----------------------------------------------------PIPES------------------------------------------
 
 /* This process of reading data from a Read Stream and tranfering data via the WriteStream is quire commune in Node JS
 
@@ -370,4 +370,16 @@ var myWriteStream = fs.WriteStream(__dirname+"/WriteMe.txt")
 myReadStream.pipe(myWriteStream);
 
 
--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------
+On every project we use npm in, we should have a package.json file, that keeps track on the packages we have installed so far and their versions, so if we give our work to another developers they will be able to know which packages they should install to run the project
+
+to make a package.json, we don't do it manually
+u simply have to add run this cmd : npm init
+and answer the given questions
+
+and while installing any package we need to run concatenate the
+installation cmd with -save,
+so package.json, will know that a change has been made and it will update.
+
+So when the other developers import ur project + that package.json and run npm install
+it will automatically check the dependencies and install all the missing packages to run the project properly which is sooooo cooollllll!

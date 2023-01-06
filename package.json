@@ -1,0 +1,26 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "demo project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zorous/Node-JS-Demo.git"
+  },
+  "keywords": [
+    "demo",
+    "nodejs"
+  ],
+  "author": "Zorous",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zorous/Node-JS-Demo/issues"
+  },
+  "homepage": "https://github.com/Zorous/Node-JS-Demo#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
