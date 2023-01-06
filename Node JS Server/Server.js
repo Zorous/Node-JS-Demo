@@ -10,7 +10,7 @@ var http = require('http');
 it has also the Response Status (200(OK),404(NOT FOUND)) */
 
 var server = http.createServer(function(req,res){
-    console.log(req.url)
+    console.log("X"+req.url)
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('Awwesome')
 })
@@ -20,7 +20,7 @@ var server = http.createServer(function(req,res){
 //it still wouldn't work bcs we didn't specify a PORT number which it should listen to,
 // so we need to set  it to listen to a particular PORT on Requests
 
-server.listen(3000,'127.0.0.1');
-console.log('Server running at http://127.0.0.1:3000');
+server.listen(8888,'127.0.0.1');
+console.log('Server running at http://127.0.0.1:8888');
 
 //Now the server is running on this address
