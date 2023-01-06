@@ -10,6 +10,10 @@ var http = require('http');
 it has also the Response Status (200(OK),404(NOT FOUND)) */
 
 var server = http.createServer(function(req,res){
+
+    //when the user makes a different request it will log it down 
+    //exe : http:127.0.0.1/home
+    //>>/home
     console.log("X"+req.url)
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('Awwesome')
