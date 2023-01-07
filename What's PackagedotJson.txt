@@ -1,0 +1,15 @@
+--------------------------------------------------------------------------
+On every project we use npm in, we should have a package.json file, that keeps track on the packages we have installed so far and their versions, so if we give our work to another developers they will be able to know which packages they should install to run the project
+
+to make a package.json, we don't do it manually
+u simply have to add run this cmd : npm init
+and answer the given questions
+
+and while installing any package we need to run concatenate the
+installation cmd with -save,
+so package.json, will know that a change has been made and it will update.
+
+So when the other developers import ur project + that package.json and run npm install
+it will automatically check the dependencies and install all the missing packages to run the project properly which is sooooo cooollllll!
+
+-------------------------------------------------------------------------

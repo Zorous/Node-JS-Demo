@@ -14,9 +14,9 @@ var server = http.createServer(function(req,res){
     //when the user makes a different request it will log it down 
     //exe : http:127.0.0.1/home
     //>>/home
-    console.log("X"+req.url)
+    console.log(req.url)
     res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Awwesome')
+    res.end('There we go')
 })
 
 

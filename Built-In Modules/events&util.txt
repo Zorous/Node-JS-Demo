@@ -1,0 +1,47 @@
+------------------The Node Event Emitter-------------------
+
+what we was doing so far is creating our costume Modules, and the Node JS has an in-built  modules we could use too
+exe 1:  the event module
+var events = require('events')
+
+var myEmitter = new events.EventEmitter();
+
+//it's so much like make a JQuery event listener.
+//So what we do here is when a specific event is triggered we launch a function
+myEmitter.on('someEvent',function(message){
+console.log(message)
+})
+
+//here we triggered the event manually
+myEmitter.emit('someEvent', 'the event was emitted')
+
+________________util___________
+exe 2 : the util module
+var events = require('events')
+var util = require('util')
+
+var Person = function(name){
+this.name = name;
+}
+
+//utils allows us to inherit other modules utilities, it takes 2 params, p1; which element u want to inherate the module to it, p2;
+// which module u want to inherit.
+
+util.inherits(Person, events.EventEmitter);
+
+var Mordred = new Person('Mordred');
+var Ryu = new Person('Ryu');
+var Emi = new Person('emii');
+
+var people = [Mordred,Ryu,Emi];
+
+people.forEach(function(person){
+person.on('speak', function(talk){
+console.log(person.name + ' said : '+talk)
+})
+}
+);
+
+//without inheriting the event module from events using util, we wasn't would be able to trigger an event that way
+Emi.emit('speak','Heyooooo!!')
+

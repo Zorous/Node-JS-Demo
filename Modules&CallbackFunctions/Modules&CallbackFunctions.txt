@@ -1,0 +1,66 @@
+-----------------Function Expressions ( ! )-----------------
+
+//2
+const Callback = function (m){
+m();
+}
+//1
+const test = function(){
+console.log("bye bye")
+}
+//3
+Callback(test);
+
+>>bye bye
+
+
+------------------------Modules & Require-------------
+a module simply is another javascript file, that has another functions which we could use on other js files 
+just like components on React
+and to import a module on Node js we need to use the require method that accepts the module's path as a parameter
+WITHOUT forgetting to export our module (making it available for importation) 
+using that : module.exports = functionName;
+
+exe (in the test.js file) : module.exports = functionName;
+exe : var test =  require('./test');
+
+if we think about it, it's a Callback function like the example up there ( ! )
+
+
+
+
+-----------------------Module Paterns------------------------
+template strings are when we use  those `` instead of the usual '' coats
+on the example above, we only made and exported a single module, and the module.exports is an object, we can pass many modules with it
+ so if we want to export many we should do it like this :
+first of all there's 3 ways for exporting : 
+>things.js
+
+function fct1(){}
+function fct2(){}
+function fct3(){}
+
+//Methode 1 : refering
+module.exports.fct1 = fct1;
+module.exports.fct2 = fct2;
+module.exports.fct3 = fct3;  
+
+
+//Methode 2 : directly
+module.exports.fct1 = function(){}
+module.exports.fct2 = function(){}
+module.exports.fct3 = function(){}
+
+//Method 3 : asigning an object to the module.exports object, and btw not only functions can be exported as modules we can export even variables
+module.exports = {
+fct 1 : fct1,
+fct2 : fct2,
+vartest : vartest
+}
+> app.js
+var things = require ('./things')
+//and to use them now we could do it that way
+things.fct1()
+things.fct2()
+things.fct3()
+

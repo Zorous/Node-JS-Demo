@@ -1,0 +1,42 @@
+-------------------------------------------------------------Interacting with the system files------------------------------------------------------------
+to read and write and interact with files on our computer we will need the help of one of the core Node Js modules and it's called "fs"
+we import it simply that way ; 
+var fs = require('fs');
+_______________READING______________
+to read a document we need to use the readFileSync() methode; it's a synchronous methode, so it blocks the flowing of the Code till
+it accomplishes reading the document that got asigned to it. there's also an Asynchronuous version of this method,
+it accepts 2 parametres, the 1st is the document's path and the 2nd is the character encoding, we are dealing with binary data after all, so we will use the "utf8" encoding mostly
+
+exe : 
+var fs = require('fs');
+var Doc = fs.readFileSync('Document.txt', 'utf8')
+console.log(Doc)
+//it's as simple as that to read a file
+
+_______________WRITING______________
+var fs = require('fs');
+
+
+//using the writeFileSync method we could make changes in files
+//it accepts 2 parameters the 1st one is the file's path and the 2nd one is the changes u want to make.
+//if the file does exist it will make changes on it, if it doesn't it will create one with that name and write what u have assigned to it
+fs.writeFileSync('Doc.txt',"i got changed")
+
+_______________DELETING FILE______________
+//we could do that easily using the unlink method
+//exe : 
+fs.unlink('filePath.extension')
+
+_______________CREATE DIRECTORY Synchronously______________
+/* always using the fs module, and just as how we make a directory on DOS cmds
+we could do it easily on Node js too, using the mkdirSync() methode 
+exe : */
+fs.mkdirSync('directorysName')
+
+_______________DELETING DIRECTORY Synchronously______________
+//we just replace mkdirSync with emdirSync
+fs.rmdirSync('directorysName')
+
+_______________CREATE DIRECTORY______________
+to do it without blocking the flow of our code we need to just split the Sync word and fire a function to handle it
+

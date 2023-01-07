@@ -1,0 +1,80 @@
+__________________________Streams and Buffers______________________
+
+Buffers :
+- are a Temporary storage spot for chunk of data that is being transferred from one place to another
+- Transfer samll chunks of data at a time
+- the buffer is filled with data, then passed along
+
+Streams : it's simply a stream of data that flows overtime from one place to another
+the data fllows down the stream into the buffer which collects a small chunk of data together into a buffer, 
+ after the buffer is filled it passed that chunk of data down the stream to be processed to the client
+
+so there uses is we can start consuming data even before it's fully arrived
+it's increases the performance of our application so much
+
+There's 3 types of streams:
+-writable streams - allow node js to write data to a stream
+- readable streams - allows js t read data from our stream
+- Duplex - can read and write to a stream
+
+
+
+__________________READABLE   STREAM____________________
+We can make our own custom stream in Node JS,
+first of all we need to use the fs module, so we can read documents throught the streams
+createReadStream() : => takes a parametre that has the directory name u are in concatenated with the file name, it also had a custom 3rd parametre and it's the type of the return ('utf-8',...)
+also there's an event called DATA in the readStream, which allows us to listen to any kind of chunk of data from the stream
+
+
+var http = require('http');
+var fs = require('fs');
+
+
+//it will read it a lil bit per time, and split the data before pass it in chunks to the variable
+var myReadStream = fs.createReadStream(__dirname +'/fileName');
+
+//we use a data event to listen to the variable when each chunk of the data arrives
+//it takes 2 parametres. p1; the event. p2; a fired function on that event that has chunk as a parametre
+
+myReadStream.on('data', function(chunk){
+console.log('new chunk received');
+console.log(chunk);
+});
+
+
+//The benifit of this is every time we get a chunk of data we send it to the user using a writable stream so the app will be tooooo fast
+
+
+__________________WRITABLE   STREAM____________________
+
+var fs = require('fs');
+
+var http = require('http');
+
+/* 
+We can make our own custom stream in Node JS,
+first of all we need to use the fs module, so we can read documents through the streams
+createReadStream() : => takes a parameter that has the directory name u are in concatenated with the file name, it also had a custom 3rd parametre and it's the type of the return ('utf-8',...)
+also there's an event called DATA in the readStream, which allows us to listen to any kind of chunk of data from the stream */
+
+//it will read it a lil bit per time, and split the data before pass it in chunks to the variable
+var myReadStream = fs.ReadStream(__dirname+"/ReadMe.txt",'utf-8')
+
+//using this variable we will write every received chunk in a WriteMe.txt file, its will write on it if its already exists or create it if it doesn't
+var myWriteStream = fs.WriteStream(__dirname+"/WriteMe.txt")
+
+
+//we use a data event to listen to the variable when each chunk of the data arrives
+//it takes 2 parameters. p1; the event. p2; a fired function on that event that has chunk as a parameter
+
+myReadStream.on('data',function(chunk){
+    console.log('A new chunk has arrived')
+    // console.log(chunk);
+
+    //it has pre-defined method called write(), we use it to write on files
+    myWriteStream.write(chunk)
+})
+
+
+
+

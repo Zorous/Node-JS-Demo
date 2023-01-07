@@ -1,0 +1,43 @@
+---------------------Clients & Servers(Reminder)------------------------------------
+
+When the users are normally scrolling on web on a specific browser they send requests to the server, then the server handle that request and send the response to the user.
+But how does the user and the server actually communicates with each other.
+here when the PROTOCOLS role comes
+
+What's a PROTOCOLE : 
+a protocole is basically a set od communiaction rules, that 2 sides agree to use when communicating, there's so much famous protocoles like : 
+FTP (File Transfer Protocol)
+TCP
+HTTP
+
+The data is send down the socket between the 2 computers (server and user's computer) via a protocol called TCP.
+so while the data is Structured on a particular way, the way it got sent from the server to the client is via that TCP.
+TCP essentially does split the coming data into smaller little sections and transfer them along the socket.
+the splited small lil sections called SOCKETS.
+So this functionality is built in our computers and Node JS gives us the ability to access to this functionality .
+so if we run Node JS on the server side we could tell them which data we wanna send out to client when they make a particular action.
+
+
+
+--------------Creating a Server-----------------------
+
+To create a server, we need the help of an HTTP module, this module has a methode called "createServer()" that could help us to create a server,
+it accepts a function as a parametre that's has 2 parametres (requestObject,ResponseObject) to deal with the server requests.
+the RequestObject comes loaded with the details about the request that has been made.
+the responseObject is something we use to send response to the client.
+
+
+____________Response Headers_____________
+/* A Response Headers is where we specify the Response's type, each response type can be treated differently (JSON,HTML,XML...)
+it has also the Response Status (200(OK),404(NOT FOUND)) */
+
+var http = require('http');
+
+var server = http.createServer(function(req , res){
+res.writeHead(200,{'Content-Type' : 'text/plain'});
+res.end('Awwwwwesome')
+});
+
+//it still wouldn't work bcs we didn't specify a PORT number which it should listen to, so we need to set  it to listen to a particular PORT on Requests
+
+server.listen(3000, '127.0.0.1')

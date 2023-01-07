@@ -1,0 +1,29 @@
+--------------PIPES----------------
+
+/* 
+This process of reading data from a Read Stream and transfering data via the WriteStream is quire commune in Node JS
+
+that's why there's pipes
+
+a pipe can help us do exactly the same thing, on the commune way after we read Data we transfer it manually using the writeStream
+BUT using a pipe we can do the writing process automatically (pipping it)
+
+From Readable to Writable Stream ( ✅)
+From a Writable to a Readable Stream (❎)
+
+ */
+
+
+
+var fs = require('fs');
+
+var http = require('http');
+
+
+var myReadStream = fs.ReadStream(__dirname+"/ReadMe.txt",'utf-8')
+
+var myWriteStream = fs.WriteStream(__dirname+"/WriteMe.txt")
+
+//using the pipe method simply we can it
+myReadStream.pipe(myWriteStream);
+

@@ -81,8 +81,8 @@ Callback(test);
 -------------------------------------------------------------------Modules & Require-------------------------------------------------------------------
 a module simply is another javascript file, that has another functions which we could use on other js files 
 just like components on React
-and to import a module on Node js we need to use the require methode that accepts the module's path as a parametre
-WITHOUT forgeting to export our module (making it available for importation) 
+and to import a module on Node js we need to use the require method that accepts the module's path as a parameter
+WITHOUT forgetting to export our module (making it available for importation) 
 using that : module.exports = functionName;
 
 exe (in the test.js file) : module.exports = functionName;
@@ -383,3 +383,6 @@ so package.json, will know that a change has been made and it will update.
 
 So when the other developers import ur project + that package.json and run npm install
 it will automatically check the dependencies and install all the missing packages to run the project properly which is sooooo cooollllll!
+
+-------------------------------------------------------------------------
+
