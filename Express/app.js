@@ -44,7 +44,9 @@ app.get("/",function(req,res){
 //after using the EJS engine we will replace the sendFile() method with the render method
 
 res.render('Home');
-
+/* Render method accepts also a 2nd optional parameter, and it's an object that
+where the users could pass parameters via their requests, see the example below
+*/
 })
 
 
@@ -62,7 +64,13 @@ app.get("/contact",function(req,res){
 app.get("/profile/:id",function(req,res){
 
 //the request object has a sub-object called params where our parameters will be passed
-res.send('the requested id is '+ req.params.id)
+
+// this >>
+// res.send('the requested id is '+ req.params.id)
+
+// becomes like this>>
+res.render('profile',{id : req.params.id});
+
 })
 
 

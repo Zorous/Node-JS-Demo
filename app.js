@@ -19,16 +19,16 @@ res.render('Home');
 
 
 
-app.get("/contact",function(req,res){
+/* app.get("/contact",function(req,res){
 
 
-})
+}) */
 
 app.get("/profile/:name",function(req,res){
 
-// res.send('the requested id is '+ req.params.id)
+var data = {age : 19,job:"Software Engineer",hobbies : ["programming","gaming","researching","traveling"]}
 
-res.render("Profile", {person : req.params.name})
+res.render("Profile", {person : req.params.name, data : data})
 })
 
 
