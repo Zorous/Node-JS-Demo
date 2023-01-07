@@ -2,7 +2,8 @@ With the Template Engine helps us inject some dynamic content into our HTML Code
 so what does it do is helps us to integrate data in javascript code into our HTML files
 
 there's so much templating engines, but we will use a light weight one called "EJS"
-and we can do it simply like that : <h1> % variable_name % </h1>
+and we can do it simply like that :
+=>  <h1> <=% variable_name %> </h1>
 
 but to use it we will have to follow some steps first : 
 1 - setting it as our default View engine using the set() method in our routing files

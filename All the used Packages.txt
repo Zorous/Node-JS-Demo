@@ -33,7 +33,7 @@ and we can install it using this cmd :
 
 ✅EJS Package✅ :
 > it's a light templating engine that helps us integrate some dynamic content into our code
-simply like that : <h1> % variable_name % </h1>
+simply like that : <h1> <=% variable_name %> </h1>
 
 and we can install it like that : 
 >> npm install ejs

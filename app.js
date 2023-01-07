@@ -1,7 +1,8 @@
 var express = require('express');
 
 
-
+/* if you're confused go to check the Express folder first, it has a detailed
+explanation */
 
 var app = express();
 
@@ -23,9 +24,11 @@ app.get("/contact",function(req,res){
 
 })
 
-app.get("/profile/:id",function(req,res){
+app.get("/profile/:name",function(req,res){
 
-res.send('the requested id is '+ req.params.id)
+// res.send('the requested id is '+ req.params.id)
+
+res.render("Profile", {person : req.params.name})
 })
 
 
