@@ -1,0 +1,12 @@
+---------------Express--------------------
+- Why express : 
+✅ Easy and Flexible routing system
+✅ Integrates with many templating engines very easily, which is great when it comes to crafting frontend to our applications
+✅ Contains a middleware framework
+
+
+Express is just a module, that we need also to require in order to use it in our application
+- We can require it easily like that : 
+>> var express = require('express')
+
+- See the app.js to see more about how it works
