@@ -52,3 +52,14 @@ html to ejs
 
 4 - we don't use the send file method anymore,
  we will use the render method (so similar to React)
+
+
+
+
+
+✅Body Parser✅ :
+while handling a form POST request we will use this package
+and what it does is parsing the incoming request bodies in a middleware before your handlers, 
+are available under the 'req.body' property.
+and we can install it like that
+>> npm install body-parser

@@ -1,0 +1,21 @@
+=> A query string is just an additional Data added into the http request, 
+in the form of name : value pass
+
+exe: "mysite.com/blog/news?page2"
+
+we can pass many name value pairs, just with adding & between them, just like how we do on PHP.
+exe : "mysite.com/contact?person=Oussama&major=SoftwareDevelopment"
+
+The Express package handles with it's request object all those things for us.
+so when we do log in a get method the request object > query
+>> console.log(req.query)
+//we will get an object with key value pairs like that
+>> {
+    person : "Oussama",
+    major  : "SoftwareDevelopment"
+   }
+
+but instead of just loging it we could pass it to our view to handle that request in the
+render() method
+
+res.render('contact',{qs : req.query})

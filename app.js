@@ -1,18 +1,30 @@
 var express = require('express');
 
+//if you want more infos about it go to Query Stings/Post requests
+var bodyParser = require('body-parser');
 
 /* if you're confused go to check the Express folder first, it has a detailed
 explanation */
 
 var app = express();
 
+var urlencodedParser = bodyParser.urlencoded({ extended : false});
 
+
+app.use('/assets',express.static('assets'))
 
 app.set('view engine','ejs');
 
 
 app.get("/",function(req,res){
 res.render('Home');
+
+})
+app.get("/contact",function(req,res){
+    console.log(req.query);
+
+res.render('Contact',{qs : req.query})
+
 
 })
 
@@ -28,6 +40,7 @@ app.get("/profile/:name",function(req,res){
 
 var data = {age : 19,job:"Software Engineer",hobbies : ["programming","gaming","researching","traveling"]}
 
+//looking in the View directory automatically for a view called Profile and it renders it
 res.render("Profile", {person : req.params.name, data : data})
 })
 
@@ -36,5 +49,5 @@ res.render("Profile", {person : req.params.name, data : data})
 
 
 
-//listening to the 3000 port
-app.listen(3000)
+//listening to the 8000 port
+app.listen(8000)

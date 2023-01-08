@@ -1,0 +1,50 @@
+when we try to integrate an external css file or deal with any document it wont work
+bcs in the end, the css static file is making a request to server but our app
+running on node js is not responding to this request.
+so what we could do is creating different handlers for those requests,
+for images and stylesheets etc..
+
+but fortunately we can use something called Middleware.
+it's an Express In-Built Middleware
+
+So Middleware is essentially the code that runs between requests and responses 
+so it's in the Middle.
+and e can use it like this
+>>app.use()
+//we could match it to a routing if we want or if we don't put a routing, it's gonna use a routing
+on every request that is made
+
+
+so lets suppose we have our style sheet "style.css" in an assets folder 
+we need to make it like that then
+
+***********************M1****************************
+>>app.use('/assets',function(req, res, next){
+console.log(req.url)
+
+next();
+})
+****************************************************
+//what we did is whenever someone visits "/assets" or "/assets/something else"
+ we will fire a function, this function takes the request object parameter and 
+ the response object parameter, and also an additional parameter called "next" and it's a method
+ so when we run our function, we need a way to tell node js to move to the next method,request or 
+ Middleware, so all what we do in the end of this Middleware we write 
+ ⭐"next()"
+ if don't put it the application will crush or break
+
+ Also express comes already with some inbuilt methods we can use to handle the interaction with our
+ static files
+
+
+ ***********************⭐M2⭐****************************
+>>app.use('/assets', express.static('assets'))
+//the first use() parameter is the matching route and the second is the matching folder
+**********************************************************
+
+Now whenever we make a request to the assets folder, it's gonna connect it to 
+our assets folder, and it's gonna map in this folder and serve whatever what we request
+
+//Now we can deal with our css static files that's in the assets folder normally
+//we wont need to use the next() method anymore since the in-built express method take cares 
+of all of this

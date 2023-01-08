@@ -18,3 +18,19 @@ html to ejs
 
 4 - we don't use the send file method anymore,
  we will use the render method (so similar to React)
+
+
+
+
+
+
+ ------------------Partial Templates----------------------
+
+ We can use it to integrate a NavBar on all our views without having 
+ to integrate it on each one (include)
+ just like the old ways on PHP we use an include method
+ and we use it like that  :
+ <%- include('fileName') -%>
+  or
+ <%- include('./Dirname/fileName') -%>
+

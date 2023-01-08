@@ -1,0 +1,22 @@
+
+- POST is a request method, so basically we are asking the server to accept or store some data
+which is on the body of a request
+the data we are posting to the server is in the Request body itself
+
+- Often used in submitting forms
+
+just like PHP :
+
+1- we add the action and the method type in our form
+exe : 
+    <form id="contact-form" method="POST" action="/contact"></form>
+
+
+2 - we go to where we have the routing methods, it's app.js in our case
+we will use a body parser package called "body-parser" which parses the incoming
+request bodies in a middleware before your handlers, 
+are available under the 'req.body' property
+after installing it using : >> npm install body-parser
+we should require it in our app.js file like that 
+>> var bodyParser = require('body-parser')
+>> var urlencodedParser = bodyParser.urlencoded({ extended : false});

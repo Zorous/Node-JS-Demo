@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0; 
+background-color: skyblue;
+color: #fff;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h1{
+    font-size: 48px;
+    text-align: center;
+}
+h2,h3,h4,ul{
+    text-align: center;
+    font-weight: 500;
+}
+
+input,p,label{
+    text-align: center;
+}
+
+form{
+    padding: 15%;
+}

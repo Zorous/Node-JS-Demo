@@ -31,7 +31,7 @@ that's the default behavior
 
 
 
-
+//setting the index page
 app.get("/",function(req,res){
 // express has extended the request object and the response object and added more functionality to them
 
