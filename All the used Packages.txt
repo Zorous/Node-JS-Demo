@@ -18,7 +18,7 @@ to install it again since it's already installed in my computer
 ⭐the last thing is to run our application we wont use "node app"
 to run our app, we will use "nodemon app" instead 
 
-
+-----------------------------------------------------------------------------------------
 
 
 ✅Express package✅ :
@@ -29,6 +29,7 @@ and helps us also to integrates with many templating engines very easily
 and we can install it using this cmd : 
 >> npm install express
 
+-----------------------------------------------------------------------------------------
 
 
 ✅EJS Package✅ :
@@ -54,6 +55,7 @@ html to ejs
  we will use the render method (so similar to React)
 
 
+-----------------------------------------------------------------------------------------
 
 
 
@@ -63,3 +65,10 @@ and what it does is parsing the incoming request bodies in a middleware before y
 are available under the 'req.body' property.
 and we can install it like that
 >> npm install body-parser
+
+
+-----------------------------------------------------------------------------------------
+
+
+✅Nodemailer✅ :
+is simply a package that helps us send mails to the user

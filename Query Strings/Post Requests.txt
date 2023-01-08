@@ -7,7 +7,7 @@ the data we are posting to the server is in the Request body itself
 
 just like PHP :
 
-1- we add the action and the method type in our form
+1- we add the action and the method type in our form, and don't forget to set assign a name to you inputs
 exe : 
     <form id="contact-form" method="POST" action="/contact"></form>
 

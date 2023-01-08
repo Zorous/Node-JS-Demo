@@ -10,7 +10,7 @@ var app = express();
 
 var urlencodedParser = bodyParser.urlencoded({ extended : false});
 
-
+//Setting our style sheet directory
 app.use('/assets',express.static('assets'))
 
 app.set('view engine','ejs');
@@ -20,10 +20,23 @@ app.get("/",function(req,res){
 res.render('Home');
 
 })
+
 app.get("/contact",function(req,res){
     console.log(req.query);
 
 res.render('Contact',{qs : req.query})
+
+
+})
+
+//Handling post
+app.post("/contact",urlencodedParser,function(req,res){
+
+    //urlencodedParser already parsed this data for us
+    console.log(req.body);
+//when we receive a post request from the form in the contact view, we render the success page
+//and pass the data we got as a parameter for confirmation for example
+res.render('Contact-success',{data : req.body})
 
 
 })
